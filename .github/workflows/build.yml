@@ -27,9 +27,6 @@ jobs:
           java-version: 11
       - name: Change gradlew permissions
         run: chmod +x ./gradlew
-      - name: Set up application properties
-        run: echo ${{ secrets.AP }}
-        shell: bash
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
