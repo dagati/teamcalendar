@@ -14,7 +14,7 @@ jobs:
         image: mysql:latest
         env:
           MYSQL_ROOT_PASSWORD: ${{ secrets.ROOT_PASSWORD }}
-          MYSQL_DATABASE: 'alines'
+          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
         ports:
           - "3306:3306"
     steps:
