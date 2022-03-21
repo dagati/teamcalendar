@@ -20,6 +20,7 @@ public class User {
 
     @NotNull
     @Length(max = 64)
+    @Column(unique = true)
     private String email;
 
     @NotNull
@@ -30,6 +31,7 @@ public class User {
     @Length(max = 64)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @NotNull
     private Authority authority;
 
