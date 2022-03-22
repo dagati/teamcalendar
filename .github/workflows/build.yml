@@ -17,15 +17,15 @@ jobs:
           MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
         ports:
           - "3306:3306"
+    env:
+      DB: teamcalendar
+      USERNAME: root
+      PASSWORD: root
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up MySQL
-        env:
-          DB: teamcalendar
-          USERNAME: root
-          PASSWORD: root
         run: |
           sudo systemctl start mysql
           mysql -e 'CREATE DATABASE ${{ env.DB }};' -u${{ env.USERNAME }} -p${{ env.PASSWORD }}
