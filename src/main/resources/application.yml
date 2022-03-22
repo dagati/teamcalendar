@@ -8,6 +8,6 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/teamcalendar
-    username: root
-    password: root
+    url: jdbc:mysql://${{ secrets.DB_URL }}:3306/${{ secrets.DB_NAME }}
+    username: ${{ secrets.DB_USERNAME }}
+    password: ${{ secrets.DB_PASSWORD }}
