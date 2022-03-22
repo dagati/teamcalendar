@@ -1,6 +1,5 @@
 package com.datagi.teamcalendar.domain.announcement;
 
-
 import com.datagi.teamcalendar.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -45,3 +44,4 @@ public class Announcement {
         this.user = user;
     }
 }
+
