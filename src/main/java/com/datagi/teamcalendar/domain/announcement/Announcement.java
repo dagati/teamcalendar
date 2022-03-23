@@ -1,10 +1,7 @@
 package com.datagi.teamcalendar.domain.announcement;
 
 import com.datagi.teamcalendar.domain.user.User;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -13,6 +10,8 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 @Entity
 public class Announcement {
 
@@ -34,14 +33,5 @@ public class Announcement {
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
-
-    @Builder
-    public Announcement(Long id, String title, String content, LocalDateTime createdDatetime, User user) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.createdDatetime = createdDatetime;
-        this.user = user;
-    }
 }
 
