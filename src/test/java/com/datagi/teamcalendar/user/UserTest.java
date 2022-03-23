@@ -4,6 +4,8 @@ import com.datagi.teamcalendar.domain.user.Authority;
 import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -75,6 +77,20 @@ class UserTest {
                 .orElse(null);
 
         assertNotEquals(alice, bob);
+    }
+
+    @Test
+    void toStringTest() {
+        Logger logger = LoggerFactory.getLogger(this.getClass());
+
+        User alice = User.builder()
+                .email("alice@google.com")
+                .password("1q2w3e4r!!")
+                .name("alice")
+                .authority(Authority.USER)
+                .build();
+
+        logger.info(alice.toString());
     }
 
 }
