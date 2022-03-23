@@ -28,9 +28,53 @@ class UserTest {
                 .build();
         userRepository.save(user);
 
-        User result = userRepository.findByEmail(user.getEmail()).orElse(null);
+        User result = userRepository.findByEmail(user.getEmail())
+                .orElse(null);
         assertNotNull(result);
         assertEquals(user.getId(), result.getId());
+    }
+
+    @Test
+    void equalsSuccessTest() {
+        User saved = User.builder()
+                .email("alice@google.com")
+                .password("1q2w3e4r!!")
+                .name("alice")
+                .authority(Authority.USER)
+                .build();
+        userRepository.save(saved);
+
+        User read = userRepository.findByEmail(saved.getEmail())
+                .orElse(null);
+
+        assertEquals(saved, read);
+    }
+
+    @Test
+    void equalsFailureTest() {
+        userRepository.save(
+                User.builder()
+                        .email("alice@google.com")
+                        .password("1q2w3e4r!!")
+                        .name("alice")
+                        .authority(Authority.USER)
+                        .build()
+        );
+        userRepository.save(
+                User.builder()
+                        .email("bob@google.com")
+                        .password("p@ssword")
+                        .name("bob")
+                        .authority(Authority.USER)
+                        .build()
+        );
+
+        User alice = userRepository.findByEmail("alice@google.com")
+                .orElse(null);
+        User bob = userRepository.findByEmail("bob@google.com")
+                .orElse(null);
+
+        assertNotEquals(alice, bob);
     }
 
 }
