@@ -42,7 +42,7 @@ class AnnouncementTest {
                 .createdDatetime(LocalDateTime.now())
                 .user(user)
                 .build();
-        System.out.println(announcementRepository.save(announcement));
+        announcementRepository.save(announcement);
 
         Announcement result = announcementRepository.findById(announcement.getId()).orElse(null);
         assertNotNull(result);
