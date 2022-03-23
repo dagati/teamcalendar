@@ -32,7 +32,7 @@ public class Announcement {
     private LocalDateTime createdDatetime;
 
     @ManyToOne
-    @JoinColumn(name="user-id")
+    @JoinColumn(name="user_id")
     private User user;
 
     @Builder
