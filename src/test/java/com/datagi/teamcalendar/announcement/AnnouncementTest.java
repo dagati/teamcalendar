@@ -37,8 +37,8 @@ public class AnnouncementTest {
         userRepository.save(user);
 
         Announcement announcement = Announcement.builder()
-                .title("안녕하세요")
-                .content("테스트중입니다")
+                .title("hello friends")
+                .content("test content")
                 .createdDatetime(LocalDateTime.now())
                 .user(user)
                 .build();
