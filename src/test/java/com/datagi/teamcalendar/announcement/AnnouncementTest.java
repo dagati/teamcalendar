@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Transactional
 @SpringBootTest
-public class AnnouncementTest {
+class AnnouncementTest {
 
     @Autowired
     private AnnouncementRepository announcementRepository;
