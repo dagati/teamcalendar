@@ -45,6 +45,8 @@ class UserTest {
                 .name("alice")
                 .authority(Authority.USER)
                 .build();
+        userRepository.save(alice);
+
         User bob = alice;
 
         assertEquals(alice, bob);
@@ -55,20 +57,19 @@ class UserTest {
      */
     @Test
     void equalsSuccessTest2() {
-        User alice1 = User.builder()
-                .email("alice@google.com")
-                .password("1q2w3e4r!!")
-                .name("alice")
-                .authority(Authority.USER)
-                .build();
-        User alice2 = User.builder()
-                .email("alice@google.com")
-                .password("1q2w3e4r!!")
-                .name("alice")
-                .authority(Authority.USER)
-                .build();
+        String aliceEmail = "alice@google.com";
 
-        assertEquals(alice1, alice2);
+        User alice = User.builder()
+                .email(aliceEmail)
+                .password("1q2w3e4r!!")
+                .name("alice")
+                .authority(Authority.USER)
+                .build();
+        userRepository.save(alice);
+
+        User aliceOnDB = userRepository.findByEmail(aliceEmail).orElse(null);
+
+        assertEquals(alice, aliceOnDB);
     }
 
     /**
