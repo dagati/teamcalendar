@@ -50,14 +50,12 @@ class UserTest {
                 .build();
         userRepository.save(user);
 
-        assertThrows(DataIntegrityViolationException.class, () -> {
-            User anotherUser = User.builder()
-                    .email(email)
-                    .password("1q2w3e4r!!")
-                    .name("alice")
-                    .authority(Authority.USER)
-                    .build();
-            userRepository.save(anotherUser);
-        });
+        User anotherUser = User.builder()
+                .email(email)
+                .password("1q2w3e4r!!")
+                .name("alice")
+                .authority(Authority.USER)
+                .build();
+        assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(anotherUser));
     }
 }
