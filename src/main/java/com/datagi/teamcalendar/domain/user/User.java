@@ -1,16 +1,17 @@
 package com.datagi.teamcalendar.domain.user;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
+@Builder
+@Getter
 @Entity
 public class User {
 
@@ -34,13 +35,4 @@ public class User {
     @Enumerated(EnumType.STRING)
     @NotNull
     private Authority authority;
-
-    @Builder
-    public User(Long id, String email, String name, String password, Authority authority) {
-        this.id = id;
-        this.email = email;
-        this.name = name;
-        this.password = password;
-        this.authority = authority;
-    }
 }
