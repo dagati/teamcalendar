@@ -55,18 +55,41 @@ class UserTest {
      */
     @Test
     void equalsSuccessTest2() {
-        String aliceEmail = "alice@google.com";
-        User alice = User.builder()
-                .email(aliceEmail)
+        User alice1 = User.builder()
+                .email("alice@google.com")
                 .password("1q2w3e4r!!")
                 .name("alice")
                 .authority(Authority.USER)
                 .build();
-        userRepository.save(alice);
+        User alice2 = User.builder()
+                .email("alice@google.com")
+                .password("1q2w3e4r!!")
+                .name("alice")
+                .authority(Authority.USER)
+                .build();
 
-        User aliceOnDB = userRepository.findByEmail(aliceEmail).orElse(null);
+        assertEquals(alice1, alice2);
+    }
 
-        assertEquals(alice, aliceOnDB);
+    /**
+     * hashCode 테스트
+     */
+    @Test
+    void equalsHashCodeTest() {
+        User alice1 = User.builder()
+                .email("alice@google.com")
+                .password("1q2w3e4r!!")
+                .name("alice")
+                .authority(Authority.USER)
+                .build();
+        User alice2 = User.builder()
+                .email("alice@google.com")
+                .password("1q2w3e4r!!")
+                .name("alice")
+                .authority(Authority.USER)
+                .build();
+
+        assertEquals(alice1.hashCode(), alice2.hashCode());
     }
 
     /**
