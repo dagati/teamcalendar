@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@ToString
+@EqualsAndHashCode
 @Entity
 public class Announcement {
 
@@ -34,4 +36,3 @@ public class Announcement {
     @JoinColumn(name="user_id")
     private User user;
 }
-
