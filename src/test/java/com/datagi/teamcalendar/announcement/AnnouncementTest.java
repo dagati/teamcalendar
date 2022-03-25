@@ -14,9 +14,8 @@ import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Transactional
 @SpringBootTest
@@ -52,8 +51,8 @@ class AnnouncementTest {
         announcementRepository.save(announcement);
 
         Announcement result = announcementRepository.findById(announcement.getId()).orElse(null);
-        assertNotNull(result);
-        assertEquals(announcement.getId(), result.getId());
+
+        assertThat(result).isEqualTo(announcement);
     }
 
     @Test
