@@ -37,7 +37,7 @@ public class ScheduleTest {
 
     @Test
     @DisplayName("일정 저장 성공 테스트")
-    void saveScheduleSuccessTest(){
+    void saveScheduleSuccessTest() {
 
         User user = User.builder()
                 .email("kim@gmail.com")
@@ -56,8 +56,8 @@ public class ScheduleTest {
         Schedule schedule = Schedule.builder()
                 .name("Grilled Fish")
                 .detail("go to eat Grilled Fish")
-                .startDatetime(LocalDateTime.of(2022,5,3,12,0))
-                .endDatetime(LocalDateTime.of(2022,5,3,13,0))
+                .startDatetime(LocalDateTime.of(2022, 5, 3, 12, 0))
+                .endDatetime(LocalDateTime.of(2022, 5, 3, 13, 0))
                 .color("#000000")
                 .team(team)
                 .build();
@@ -71,7 +71,7 @@ public class ScheduleTest {
 
     @Test
     @DisplayName("일정 저장 실패 테스트(일정 제목이 없음)")
-    void saveScheduleFailureTest(){
+    void saveScheduleFailureTest() {
 
         User user = User.builder()
                 .email("kim@gmail.com")
@@ -89,8 +89,8 @@ public class ScheduleTest {
 
         Schedule schedule = Schedule.builder()
                 .detail("go to eat Grilled Fish")
-                .startDatetime(LocalDateTime.of(2022,5,3,12,0))
-                .endDatetime(LocalDateTime.of(2022,5,3,13,0))
+                .startDatetime(LocalDateTime.of(2022, 5, 3, 12, 0))
+                .endDatetime(LocalDateTime.of(2022, 5, 3, 13, 0))
                 .color("#000000")
                 .team(team)
                 .build();
@@ -101,7 +101,7 @@ public class ScheduleTest {
 
     @Test
     @DisplayName("일정 저장 실패 테스트(일정 제목이 제한을 넘음)")
-    void saveScheduleFailureTest2(){
+    void saveScheduleFailureTest2() {
 
         User user = User.builder()
                 .email("kim@gmail.com")
@@ -120,8 +120,8 @@ public class ScheduleTest {
         Schedule schedule = Schedule.builder()
                 .name("Grilled Fish is happy to me with everyone!!")
                 .detail("go to eat Grilled Fish")
-                .startDatetime(LocalDateTime.of(2022,5,3,12,0))
-                .endDatetime(LocalDateTime.of(2022,5,3,13,0))
+                .startDatetime(LocalDateTime.of(2022, 5, 3, 12, 0))
+                .endDatetime(LocalDateTime.of(2022, 5, 3, 13, 0))
                 .color("#000000")
                 .team(team)
                 .build();
