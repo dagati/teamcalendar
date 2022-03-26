@@ -38,19 +38,7 @@ class ScheduleTest {
     @DisplayName("일정 저장 성공 테스트")
     void saveScheduleSuccessTest() {
 
-        User user = User.builder()
-                .email("kim@gmail.com")
-                .password("kim123")
-                .name("Champon")
-                .authority(Authority.USER)
-                .build();
-        userRepository.save(user);
-
-        Team team = Team.builder()
-                .name("kick")
-                .leader(user)
-                .build();
-        teamRepository.save(team);
+        Team team = generateUserandTeam();
 
         Schedule schedule = Schedule.builder()
                 .name("Grilled Fish")
@@ -72,19 +60,7 @@ class ScheduleTest {
     @DisplayName("일정 저장 실패 테스트(일정 제목이 없음)")
     void saveScheduleFailureTest() {
 
-        User user = User.builder()
-                .email("kim@gmail.com")
-                .password("kim123")
-                .name("Champon")
-                .authority(Authority.USER)
-                .build();
-        userRepository.save(user);
-
-        Team team = Team.builder()
-                .name("kick")
-                .leader(user)
-                .build();
-        teamRepository.save(team);
+        Team team = generateUserandTeam();
 
         Schedule schedule = Schedule.builder()
                 .detail("go to eat Grilled Fish")
@@ -102,6 +78,22 @@ class ScheduleTest {
     @DisplayName("일정 저장 실패 테스트(일정 제목이 제한을 넘음)")
     void saveScheduleFailureTest2() {
 
+        Team team = generateUserandTeam();
+
+        Schedule schedule = Schedule.builder()
+                .name("I like Fish and Milk so let's go~~ and I am happy")
+                .detail("go to eat Grilled Fish")
+                .startDatetime(LocalDateTime.of(2022, 5, 3, 12, 0))
+                .endDatetime(LocalDateTime.of(2022, 5, 3, 13, 0))
+                .color("#000000")
+                .team(team)
+                .build();
+
+        assertThatThrownBy(() -> scheduleRepository.save(schedule))
+                .isInstanceOf(ConstraintViolationException.class);
+    }
+
+    private Team generateUserandTeam() {
         User user = User.builder()
                 .email("kim@gmail.com")
                 .password("kim123")
@@ -116,16 +108,6 @@ class ScheduleTest {
                 .build();
         teamRepository.save(team);
 
-        Schedule schedule = Schedule.builder()
-                .name("Grilled Fish is happy to me with everyone!!")
-                .detail("go to eat Grilled Fish")
-                .startDatetime(LocalDateTime.of(2022, 5, 3, 12, 0))
-                .endDatetime(LocalDateTime.of(2022, 5, 3, 13, 0))
-                .color("#000000")
-                .team(team)
-                .build();
-
-        assertThatThrownBy(() -> scheduleRepository.save(schedule))
-                .isInstanceOf(ConstraintViolationException.class);
+        return team;
     }
 }
