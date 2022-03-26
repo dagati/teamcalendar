@@ -38,7 +38,7 @@ class ScheduleTest {
     @DisplayName("일정 저장 성공 테스트")
     void saveScheduleSuccessTest() {
 
-        Team team = setUserandTeam();
+        Team team = makeTeam();
 
         Schedule schedule = Schedule.builder()
                 .name("Grilled Fish")
@@ -60,7 +60,7 @@ class ScheduleTest {
     @DisplayName("일정 저장 실패 테스트(일정 제목이 없음)")
     void saveScheduleFailureTest() {
 
-        Team team = setUserandTeam();
+        Team team = makeTeam();
 
         Schedule schedule = Schedule.builder()
                 .detail("go to eat Grilled Fish")
@@ -78,7 +78,7 @@ class ScheduleTest {
     @DisplayName("일정 저장 실패 테스트(일정 제목이 제한을 넘음)")
     void saveScheduleFailureTest2() {
 
-        Team team = setUserandTeam();
+        Team team = makeTeam();
 
         Schedule schedule = Schedule.builder()
                 .name("I like Fish and Milk so let's go~~ and I am happy")
@@ -93,7 +93,7 @@ class ScheduleTest {
                 .isInstanceOf(ConstraintViolationException.class);
     }
 
-    private Team setUserandTeam() {
+    private Team makeTeam() {
         User user = User.builder()
                 .email("kim@gmail.com")
                 .password("kim123")
