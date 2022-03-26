@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @SpringBootTest
-public class ScheduleTest {
+class ScheduleTest {
 
     private final UserRepository userRepository;
     private final TeamRepository teamRepository;
