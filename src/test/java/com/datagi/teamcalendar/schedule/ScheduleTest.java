@@ -127,8 +127,5 @@ class ScheduleTest {
 
         assertThatThrownBy(() -> scheduleRepository.save(schedule))
                 .isInstanceOf(ConstraintViolationException.class);
-
-        Schedule result = scheduleRepository.findById(schedule.getId()).orElse(null);
-        assertThat(result).isNull();
     }
 }
