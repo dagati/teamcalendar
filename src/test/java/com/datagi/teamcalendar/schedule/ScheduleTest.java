@@ -130,6 +130,6 @@ class ScheduleTest {
                 .isInstanceOf(ConstraintViolationException.class);
 
         Schedule result = scheduleRepository.findById(schedule.getId()).orElse(null);
-        assertThat(result).isEqualTo(null);
+        assertThat(result).isNull();
     }
 }
