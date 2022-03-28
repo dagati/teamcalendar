@@ -63,8 +63,8 @@ CREATE TABLE `schedule`
     `id`             BIGINT        NOT NULL AUTO_INCREMENT,
     `name`           VARCHAR(40)   NOT NULL,
     `detail`         VARCHAR(2000) NOT NULL,
-    `start_DATETIME` DATETIME      NOT NULL,
-    `end_DATETIME`   DATETIME      NOT NULL,
+    `start_datetime` DATETIME      NOT NULL,
+    `end_datetime`   DATETIME      NOT NULL,
     `color`          CHAR(7)       NOT NULL DEFAULT '#333333',
     `team_id`        BIGINT        NOT NULL,
 
@@ -125,7 +125,7 @@ CREATE TABLE `announcement`
     `id`               BIGINT        NOT NULL AUTO_INCREMENT,
     `title`            VARCHAR(100)  NOT NULL,
     `content`          VARCHAR(2000) NOT NULL,
-    `created_DATETIME` DATETIME      NOT NULL,
+    `created_datetime` DATETIME      NOT NULL,
     `writer_id`        BIGINT        NOT NULL,
 
     PRIMARY KEY (`id`),
