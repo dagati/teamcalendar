@@ -15,9 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @SpringBootTest
@@ -29,7 +31,11 @@ class ParticipantTest {
     private final ParticipantRepository participantRepository;
 
     @Autowired
-    public ParticipantTest(UserRepository userRepository, TeamRepository teamRepository, ScheduleRepository scheduleRepository, ParticipantRepository participantRepository) {
+    public ParticipantTest(
+            UserRepository userRepository,
+            TeamRepository teamRepository,
+            ScheduleRepository scheduleRepository,
+            ParticipantRepository participantRepository) {
         this.userRepository = userRepository;
         this.teamRepository = teamRepository;
         this.scheduleRepository = scheduleRepository;
