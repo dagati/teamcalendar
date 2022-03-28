@@ -33,9 +33,9 @@ CREATE TABLE `team`
 
 CREATE TABLE `invitation_code`
 (
-    `id`      BIGINT      NOT NULL AUTO_INCREMENT,
-    `token`   VARCHAR(16) NOT NULL UNIQUE,
-    `team_id` BIGINT      NOT NULL,
+    `id`      BIGINT   NOT NULL AUTO_INCREMENT,
+    `token`   CHAR(16) NOT NULL UNIQUE,
+    `team_id` BIGINT   NOT NULL,
 
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_invitation_code_to_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`)
