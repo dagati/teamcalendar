@@ -1,24 +1,24 @@
 -- user
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'alice@google.com', 'alice', 'alice', 'ADMIN');
+VALUES (null, 'alice@gmail.com', 'alice', 'alice', 'ADMIN');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'bob@google.com', 'bob', 'bob', 'ADMIN');
+VALUES (null, 'bob@gmail.com', 'bob', 'bob', 'ADMIN');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'charlie@google.com', 'charlie', 'charlie', 'USER');
+VALUES (null, 'charlie@gmail.com', 'charlie', 'charlie', 'USER');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'david@google.com', 'david', 'david', 'USER');
+VALUES (null, 'david@gmail.com', 'david', 'david', 'USER');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'eve@google.com', 'eve', 'eve', 'USER');
+VALUES (null, 'eve@gmail.com', 'eve', 'eve', 'USER');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'faythe@google.com', 'faythe', 'faythe', 'USER');
+VALUES (null, 'faythe@gmail.com', 'faythe', 'faythe', 'USER');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'grace@google.com', 'grace', 'grace', 'USER');
+VALUES (null, 'grace@gmail.com', 'grace', 'grace', 'USER');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'heidi@google.com', 'heidi', 'heidi', 'USER');
+VALUES (null, 'heidi@gmail.com', 'heidi', 'heidi', 'USER');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'ivan@google.com', 'ivan', 'ivan', 'USER');
+VALUES (null, 'ivan@gmail.com', 'ivan', 'ivan', 'USER');
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `authority`)
-VALUES (null, 'trudy@google.com', 'trudy', 'trudy', 'ADMIN');
+VALUES (null, 'trudy@gmail.com', 'trudy', 'trudy', 'ADMIN');
 
 -- team
 INSERT INTO `team`(`id`, `name`, `leader_id`)
