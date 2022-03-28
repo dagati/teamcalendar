@@ -33,6 +33,6 @@ public class Announcement {
     private LocalDateTime createdDatetime;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="writer_id")
     private User user;
 }
