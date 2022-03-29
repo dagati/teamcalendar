@@ -11,7 +11,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 import javax.transaction.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 @Transactional
 @SpringBootTest
@@ -24,38 +24,29 @@ class UserTest {
     @DisplayName("유저 저장 성공 테스트")
     void saveUserSuccessTest() {
         User user = User.builder()
-                .email("alice@google.com")
-                .password("1q2w3e4r!!")
-                .name("alice")
+                .email("user@gmail.com")
+                .password("iamabuser")
+                .name("user")
                 .authority(Authority.USER)
                 .build();
         userRepository.save(user);
 
-        User result = userRepository.findByEmail(user.getEmail()).orElse(null);
-        assertNotNull(result);
-        assertEquals(user.getId(), result.getId());
+        assertThat(user.getId()).isNotNull();
     }
 
     @Test
     @DisplayName("유저 저장 실패 테스트 (중복 이메일)")
     void saveUserFailureTest() {
 
-        String email = "duplicated@google.com";
+        System.out.println(userRepository.findAll());
 
         User user = User.builder()
-                .email(email)
-                .password("1q2w3e4r!!")
+                .email("alice@gmail.com")
+                .password("alice")
                 .name("alice")
                 .authority(Authority.USER)
                 .build();
-        userRepository.save(user);
 
-        User anotherUser = User.builder()
-                .email(email)
-                .password("1q2w3e4r!!")
-                .name("alice")
-                .authority(Authority.USER)
-                .build();
-        assertThrows(DataIntegrityViolationException.class, () -> userRepository.save(anotherUser));
+        assertThatThrownBy(() -> userRepository.save(user)).isInstanceOf(DataIntegrityViolationException.class);
     }
 }
