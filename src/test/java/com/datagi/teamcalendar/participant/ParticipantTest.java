@@ -13,9 +13,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import javax.transaction.Transactional;
-import javax.validation.ConstraintViolationException;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,6 +59,34 @@ class ParticipantTest {
         Participant result = participantRepository.findById(participant.getId()).orElse(null);
 
         assertThat(result).isEqualTo(participant);
+    }
+
+    @Test
+    @DisplayName("참가자 저장 실패 테스트(유저가 없음)")
+    void saveParticipantFailureTest() {
+
+        Schedule schedule = makeSchedule();
+
+        Participant participant = Participant.builder()
+                .schedule(schedule)
+                .build();
+
+        assertThatThrownBy(() -> participantRepository.save(participant))
+                .isInstanceOf(DataIntegrityViolationException.class);
+    }
+
+    @Test
+    @DisplayName("참가자 저장 실패 테스트(일정이 없음)")
+    void saveParticipantFailureTest2() {
+
+        User user = makeUser();
+
+        Participant participant = Participant.builder()
+                .user(user)
+                .build();
+
+        assertThatThrownBy(() -> participantRepository.save(participant))
+                .isInstanceOf(DataIntegrityViolationException.class);
     }
 
     private Schedule makeSchedule() {
