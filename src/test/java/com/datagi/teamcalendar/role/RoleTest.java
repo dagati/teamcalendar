@@ -36,8 +36,8 @@ class RoleTest {
     @DisplayName("역할 생성 성공 테스트")
     void createRoleSuccessTest() {
 
-        Team team = teamRepository.findById(1L).orElse(null);
-        Schedule schedule = scheduleRepository.findById(1L).orElse(null);
+        Team team = teamRepository.getById(1L);
+        Schedule schedule = scheduleRepository.getById(1L);
 
         Role role = Role.builder()
                 .name("professor")
@@ -52,7 +52,7 @@ class RoleTest {
     @Test
     @DisplayName("역할 생성 실패 테스트 (팀 정보 없음)")
     void createRoleFailureTest1() {
-        Schedule schedule = scheduleRepository.findById(1L).orElse(null);
+        Schedule schedule = scheduleRepository.getById(1L);
 
         Role role = Role.builder()
                 .name("professor")
