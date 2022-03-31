@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 
+import javax.transaction.Transactional;
 import javax.validation.ConstraintViolationException;
 
+@Transactional
 @SpringBootTest
 class RoleTest {
     private final TeamRepository teamRepository;
@@ -58,6 +60,7 @@ class RoleTest {
                 .name("professor")
                 .schedule(schedule)
                 .build();
+
         Assertions.assertThatThrownBy(() -> roleRepository.save(role))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
