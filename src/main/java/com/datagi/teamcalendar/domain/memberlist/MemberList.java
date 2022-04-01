@@ -12,6 +12,11 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Table(
+        uniqueConstraints = @UniqueConstraint(
+                columnNames = {"team_id", "member_id"}
+        )
+)
 @Entity
 public class MemberList {
 
