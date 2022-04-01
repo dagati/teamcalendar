@@ -48,9 +48,7 @@ class ParticipantTest {
 
         participantRepository.save(participant);
 
-        Participant result = participantRepository.findById(participant.getId()).orElse(null);
-
-        assertThat(result).isEqualTo(participant);
+        assertThat(participant.getId()).isNotNull();
     }
 
     @Test
