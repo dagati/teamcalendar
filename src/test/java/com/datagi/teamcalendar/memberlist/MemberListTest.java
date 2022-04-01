@@ -24,7 +24,11 @@ class MemberListTest {
     private final MemberListRepository memberListRepository;
 
     @Autowired
-    public MemberListTest(TeamRepository teamRepository, UserRepository userRepository, MemberListRepository memberListRepository) {
+    public MemberListTest(
+            TeamRepository teamRepository,
+            UserRepository userRepository,
+            MemberListRepository memberListRepository
+    ) {
         this.teamRepository = teamRepository;
         this.userRepository = userRepository;
         this.memberListRepository = memberListRepository;
