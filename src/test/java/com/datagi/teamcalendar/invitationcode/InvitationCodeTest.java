@@ -16,7 +16,7 @@ import javax.validation.ConstraintViolationException;
 
 @Transactional
 @SpringBootTest
-public class InvitationCodeTest {
+class InvitationCodeTest {
 
     private final TeamRepository teamRepository;
     private final InvitationCodeRepository invitationCodeRepository;
