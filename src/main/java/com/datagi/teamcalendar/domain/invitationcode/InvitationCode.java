@@ -24,7 +24,7 @@ public class InvitationCode {
     private Long id;
 
     @NotNull
-    @Length(max = 20)
+    @Column(length = 16)
     private String token;
 
     @JoinColumn(name = "team_id")
