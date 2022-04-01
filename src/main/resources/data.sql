@@ -64,5 +64,6 @@ VALUES (null, 'announcement 2', '사용자가 입력한 URL 주소 중 도메인
 INSERT INTO `announcement`(`id`, `title`, `content`, `created_datetime`, `writer_id`)
 VALUES (null, 'announcement 3', 'HTTP(Hyper Text Transfer Protocol)로 서버/클라이언트 모델을 따라 데이터를 주고받기 위한 프로토콜이다. 80번 포트를 사용하며 HTTP 서버가 80번 포트에서 요청을 기다리고 있으며 클라이언트는 80번 포트로 요청을 보내게 된다.', '2022-03-03 15:00:00', 10);
 
+-- schedule
 INSERT INTO `schedule`(`id`, `name`, `detail`, `start_datetime`, `end_datetime`, `color`, `team_id`)
 VALUES (null, '통합 회의', '통합 회의', '2022-03-14 09:00:00', '2022-03-14 10:00:00', '#907090', 1);
