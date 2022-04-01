@@ -75,7 +75,7 @@ class InvitationCodeTest {
     }
 
     @Test
-    @DisplayName("팀 정보 누락")
+    @DisplayName("초대 코드 생성 실패 테스트 (팀 정보 누락)")
     void saveInvitationCodeFailureTest3() {
         InvitationCode invitationCode = InvitationCode.builder()
                 .token("g897vbgs125jnbp0")
