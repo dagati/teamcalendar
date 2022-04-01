@@ -2,7 +2,6 @@ package com.datagi.teamcalendar.domain.invitationcode;
 
 import com.datagi.teamcalendar.domain.team.Team;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
