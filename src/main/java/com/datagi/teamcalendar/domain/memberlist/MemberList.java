@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(
         uniqueConstraints = @UniqueConstraint(
-                columnNames = {"team_id", "member_id"}
+                columnNames = {"team_id", "user_id"}
         )
 )
 @Entity
@@ -28,7 +28,7 @@ public class MemberList {
     @ManyToOne
     private Team team;
 
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "user_id")
     @ManyToOne
     private User user;
 }
