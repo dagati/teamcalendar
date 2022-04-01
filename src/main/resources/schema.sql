@@ -55,7 +55,8 @@ CREATE TABLE `member_list`
         ON UPDATE RESTRICT,
     CONSTRAINT `fk_member_list_to_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
         ON DELETE RESTRICT
-        ON UPDATE RESTRICT
+        ON UPDATE RESTRICT,
+    CONSTRAINT `unique_member` UNIQUE (`team_id`, `user_id`)
 );
 
 CREATE TABLE `schedule`
