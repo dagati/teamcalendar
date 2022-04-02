@@ -28,7 +28,10 @@ class ScheduleTest {
     private final ScheduleRepository scheduleRepository;
 
     @Autowired
-    public ScheduleTest(UserRepository userRepository, TeamRepository teamRepository, ScheduleRepository scheduleRepository) {
+    public ScheduleTest(UserRepository userRepository,
+                        TeamRepository teamRepository,
+                        ScheduleRepository scheduleRepository
+    ) {
         this.userRepository = userRepository;
         this.teamRepository = teamRepository;
         this.scheduleRepository = scheduleRepository;
@@ -57,8 +60,8 @@ class ScheduleTest {
     }
 
     @Test
-    @DisplayName("일정 저장 실패 테스트(일정 제목이 없음)")
-    void saveScheduleFailureTest() {
+    @DisplayName("일정 저장 실패 테스트 (일정 제목이 없음)")
+    void saveScheduleFailureTest1() {
 
         Team team = makeTeam();
 
@@ -75,7 +78,7 @@ class ScheduleTest {
     }
 
     @Test
-    @DisplayName("일정 저장 실패 테스트(일정 제목이 제한을 넘음)")
+    @DisplayName("일정 저장 실패 테스트 (일정 제목이 제한을 넘음)")
     void saveScheduleFailureTest2() {
 
         Team team = makeTeam();
