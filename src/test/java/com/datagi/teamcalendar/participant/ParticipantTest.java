@@ -28,7 +28,8 @@ class ParticipantTest {
     @Autowired
     public ParticipantTest(UserRepository userRepository,
                            ScheduleRepository scheduleRepository,
-                           ParticipantRepository participantRepository) {
+                           ParticipantRepository participantRepository
+    ) {
         this.userRepository = userRepository;
         this.scheduleRepository = scheduleRepository;
         this.participantRepository = participantRepository;
@@ -52,8 +53,8 @@ class ParticipantTest {
     }
 
     @Test
-    @DisplayName("참가자 저장 실패 테스트(유저가 없음)")
-    void saveParticipantFailureTest() {
+    @DisplayName("참가자 저장 실패 테스트 (유저가 없음)")
+    void saveParticipantFailureTest1() {
 
         Schedule schedule = scheduleRepository.getById(1L);
 
@@ -66,7 +67,7 @@ class ParticipantTest {
     }
 
     @Test
-    @DisplayName("참가자 저장 실패 테스트(일정이 없음)")
+    @DisplayName("참가자 저장 실패 테스트 (일정이 없음)")
     void saveParticipantFailureTest2() {
 
         User user = userRepository.getById(1L);

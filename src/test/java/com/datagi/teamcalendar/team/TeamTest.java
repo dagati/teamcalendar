@@ -2,7 +2,6 @@ package com.datagi.teamcalendar.team;
 
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.team.repository.TeamRepository;
-import com.datagi.teamcalendar.domain.user.Authority;
 import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -32,13 +31,8 @@ class TeamTest {
     @Test
     @DisplayName("팀 저장 성공 테스트")
     void saveTeamSuccessTest() {
-        User leader = User.builder()
-                .email("leader@gmail.com")
-                .password("iamnotareader")
-                .name("Leader")
-                .authority(Authority.USER)
-                .build();
-        userRepository.save(leader);
+
+        User leader = userRepository.getById(1L);
 
         Team team = Team.builder()
                 .name("dagati")
@@ -52,13 +46,8 @@ class TeamTest {
     @Test
     @DisplayName("팀 저장 실패 테스트 (팀 이름이 없음)")
     void saveTeamFailureTest() {
-        User leader = User.builder()
-                .email("leader@gmail.com")
-                .password("iamnotareader")
-                .name("Leader")
-                .authority(Authority.USER)
-                .build();
-        userRepository.save(leader);
+
+        User leader = userRepository.getById(1L);
 
         Team team = Team.builder()
                 .leader(leader)

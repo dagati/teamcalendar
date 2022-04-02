@@ -24,7 +24,10 @@ class AnnouncementTest {
     private final UserRepository userRepository;
 
     @Autowired
-    public AnnouncementTest(AnnouncementRepository announcementRepository, UserRepository userRepository) {
+    public AnnouncementTest(
+            AnnouncementRepository announcementRepository,
+            UserRepository userRepository
+    ) {
         this.announcementRepository = announcementRepository;
         this.userRepository = userRepository;
     }
@@ -43,14 +46,12 @@ class AnnouncementTest {
                 .build();
         announcementRepository.save(announcement);
 
-        Announcement result = announcementRepository.findById(announcement.getId()).orElse(null);
-
-        assertThat(result).isEqualTo(announcement);
+        assertThat(announcement.getId()).isNotNull();
     }
 
     @Test
-    @DisplayName("공지사항 저장 실패 테스트(제목이 없음)")
-    void saveAnnouncementFailureTest() {
+    @DisplayName("공지사항 저장 실패 테스트 (제목이 없음)")
+    void saveAnnouncementFailureTest1() {
 
         User user = userRepository.getById(1L);
 
@@ -65,7 +66,7 @@ class AnnouncementTest {
     }
 
     @Test
-    @DisplayName("공지사항 저장 실패 테스트(내용이 없음)")
+    @DisplayName("공지사항 저장 실패 테스트 (내용이 없음)")
     void saveAnnouncementFailureTest2() {
 
         User user = userRepository.getById(2L);
