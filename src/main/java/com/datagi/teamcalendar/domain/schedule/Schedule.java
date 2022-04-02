@@ -35,7 +35,7 @@ public class Schedule {
     private LocalDateTime endDatetime;
 
     @NotNull
-    @Column(columnDefinition = "char(7) default '#333333' ")
+    @Column(columnDefinition = "char(7) default '#333333'")
     private String color;
 
     @ManyToOne
