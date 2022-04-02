@@ -11,14 +11,19 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 import javax.transaction.Transactional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @SpringBootTest
 class UserTest {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public UserTest(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Test
     @DisplayName("유저 저장 성공 테스트")
