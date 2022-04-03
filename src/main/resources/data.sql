@@ -67,3 +67,7 @@ VALUES (null, 'announcement 3', 'HTTP(Hyper Text Transfer Protocol)로 서버/�
 -- schedule
 INSERT INTO `schedule`(`id`, `name`, `detail`, `start_datetime`, `end_datetime`, `color`, `team_id`)
 VALUES (null, '통합 회의', '통합 회의', '2022-03-14 09:00:00', '2022-03-14 10:00:00', '#907090', 1);
+
+-- role
+INSERT INTO `role`(`id`, `name`, `team_id`,`schedule_id`)
+VALUES (null, '백엔드', 1, 1);
