@@ -5,13 +5,14 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@EqualsAndHashCode
 @ToString
 @Builder
-@Getter
+@EqualsAndHashCode
 @Entity
 public class User {
 
@@ -20,13 +21,13 @@ public class User {
     private Long id;
 
     @NotNull
-    @Length(max = 64)
-    @Column(unique = true)
-    private String email;
+    @Size(max = 20)
+    private String name;
 
     @NotNull
-    @Length(max = 10)
-    private String name;
+    @Size(max = 80)
+    @Column(unique = true)
+    private String email;
 
     @NotNull
     @Length(max = 64)
