@@ -1,4 +1,4 @@
-package com.datagi.teamcalendar.domain.memberlist;
+package com.datagi.teamcalendar.domain.member;
 
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.user.User;
@@ -18,17 +18,17 @@ import javax.persistence.*;
         )
 )
 @Entity
-public class MemberList {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "team_id")
     @ManyToOne
+    @JoinColumn(name = "team_id")
     private Team team;
 
-    @JoinColumn(name = "user_id")
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 }

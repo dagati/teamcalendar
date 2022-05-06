@@ -1,7 +1,7 @@
 package com.datagi.teamcalendar.memberlist;
 
-import com.datagi.teamcalendar.domain.memberlist.MemberList;
-import com.datagi.teamcalendar.domain.memberlist.repository.MemberListRepository;
+import com.datagi.teamcalendar.domain.member.Member;
+import com.datagi.teamcalendar.domain.member.repository.MemberRepository;
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.team.repository.TeamRepository;
 import com.datagi.teamcalendar.domain.user.User;
@@ -17,21 +17,21 @@ import javax.transaction.Transactional;
 
 @Transactional
 @SpringBootTest
-class MemberListTest {
+class MemberTest {
 
     private final TeamRepository teamRepository;
     private final UserRepository userRepository;
-    private final MemberListRepository memberListRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public MemberListTest(
+    public MemberTest(
             TeamRepository teamRepository,
             UserRepository userRepository,
-            MemberListRepository memberListRepository
+            MemberRepository memberRepository
     ) {
         this.teamRepository = teamRepository;
         this.userRepository = userRepository;
-        this.memberListRepository = memberListRepository;
+        this.memberRepository = memberRepository;
     }
 
     @Test
@@ -40,13 +40,13 @@ class MemberListTest {
         Team team = teamRepository.getById(1L);
         User user = userRepository.getById(2L);
 
-        MemberList memberList = MemberList.builder()
+        Member member = Member.builder()
                 .team(team)
                 .user(user)
                 .build();
-        memberListRepository.save(memberList);
+        memberRepository.save(member);
 
-        Assertions.assertThat(memberList.getId()).isNotNull();
+        Assertions.assertThat(member.getId()).isNotNull();
     }
 
     @Test
@@ -55,12 +55,12 @@ class MemberListTest {
         Team team = teamRepository.getById(1L);
         User user = userRepository.getById(1L);
 
-        MemberList memberList = MemberList.builder()
+        Member member = Member.builder()
                 .team(team)
                 .user(user)
                 .build();
 
-        Assertions.assertThatThrownBy(() -> memberListRepository.save(memberList))
+        Assertions.assertThatThrownBy(() -> memberRepository.save(member))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 
@@ -69,11 +69,11 @@ class MemberListTest {
     void addToMemberListFailureTest2() {
         User user = userRepository.getById(1L);
 
-        MemberList memberList = MemberList.builder()
+        Member member = Member.builder()
                 .user(user)
                 .build();
 
-        Assertions.assertThatThrownBy(() -> memberListRepository.save(memberList))
+        Assertions.assertThatThrownBy(() -> memberRepository.save(member))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 
@@ -82,11 +82,11 @@ class MemberListTest {
     void addToMemberListFailureTest3() {
         Team team = teamRepository.getById(1L);
 
-        MemberList memberList = MemberList.builder()
+        Member member = Member.builder()
                 .team(team)
                 .build();
 
-        Assertions.assertThatThrownBy(() -> memberListRepository.save(memberList))
+        Assertions.assertThatThrownBy(() -> memberRepository.save(member))
                 .isInstanceOf(DataIntegrityViolationException.class);
     }
 }

@@ -36,7 +36,6 @@ class TeamTest {
 
         Team team = Team.builder()
                 .name("dagati")
-                .leader(leader)
                 .build();
         teamRepository.save(team);
 
@@ -50,7 +49,6 @@ class TeamTest {
         User leader = userRepository.getById(1L);
 
         Team team = Team.builder()
-                .leader(leader)
                 .build();
 
         assertThatThrownBy(() -> teamRepository.save(team))
