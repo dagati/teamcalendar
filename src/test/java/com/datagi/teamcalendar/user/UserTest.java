@@ -3,18 +3,21 @@ package com.datagi.teamcalendar.user;
 import com.datagi.teamcalendar.domain.user.Authority;
 import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.domain.user.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
-
-import javax.transaction.Transactional;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@Transactional
+@Slf4j
+@ActiveProfiles("develop")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
 class UserTest {
 
@@ -26,24 +29,8 @@ class UserTest {
     }
 
     @Test
-    @DisplayName("유저 저장 성공 테스트")
-    void saveUserSuccessTest() {
-        User user = User.builder()
-                .email("user@gmail.com")
-                .password("iamabuser")
-                .name("user")
-                .authority(Authority.USER)
-                .build();
-        userRepository.save(user);
-
-        assertThat(user.getId()).isNotNull();
-    }
-
-    @Test
     @DisplayName("유저 저장 실패 테스트 (중복 이메일)")
     void saveUserFailureTest() {
-
-        System.out.println(userRepository.findAll());
 
         User user = User.builder()
                 .email("alice@gmail.com")
@@ -53,5 +40,19 @@ class UserTest {
                 .build();
 
         assertThatThrownBy(() -> userRepository.save(user)).isInstanceOf(DataIntegrityViolationException.class);
+    }
+
+    @Test
+    @DisplayName("유저 저장 성공 테스트")
+    void saveUserSuccessTest() {
+        User user = User.builder()
+                .name("pllap")
+                .email("pllap@gmail.com")
+                .password("p@ssword")
+                .authority(Authority.USER)
+                .build();
+        userRepository.save(user);
+
+        assertThat(user.getId()).isNotNull();
     }
 }
