@@ -6,14 +6,15 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@EqualsAndHashCode
 @Builder
 @ToString
+@EqualsAndHashCode
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 public class Schedule {
 
@@ -22,17 +23,21 @@ public class Schedule {
     private Long id;
 
     @NotNull
-    @Length(max = 40)
+    @Length(max = 20)
     private String name;
 
-    @Length(max = 2000)
+    @Length(max = 512)
     private String detail;
 
     @NotNull
-    private LocalDateTime startDatetime;
+    private LocalDate beginDate;
+
+    private LocalTime beginTime;
 
     @NotNull
-    private LocalDateTime endDatetime;
+    private LocalDate endDate;
+
+    private LocalDate endTime;
 
     @NotNull
     @Column(columnDefinition = "char(7) default '#333333'")
