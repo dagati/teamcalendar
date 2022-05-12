@@ -1,6 +1,5 @@
 package com.datagi.teamcalendar.domain.role;
 
-import com.datagi.teamcalendar.domain.schedule.Schedule;
 import com.datagi.teamcalendar.domain.team.Team;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
@@ -28,8 +27,4 @@ public class Role {
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
-
-    @ManyToOne
-    @JoinColumn(name = "schedule_id")
-    private Schedule schedule;
 }
