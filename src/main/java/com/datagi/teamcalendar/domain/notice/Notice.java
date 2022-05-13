@@ -1,6 +1,7 @@
 package com.datagi.teamcalendar.domain.notice;
 
 import com.datagi.teamcalendar.domain.user.User;
+import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -11,11 +12,11 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class Notice {
+public class Notice extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

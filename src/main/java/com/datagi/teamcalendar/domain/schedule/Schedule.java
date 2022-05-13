@@ -1,6 +1,7 @@
 package com.datagi.teamcalendar.domain.schedule;
 
 import com.datagi.teamcalendar.domain.team.Team;
+import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -12,11 +13,11 @@ import java.time.LocalTime;
 @Getter
 @Builder
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class Schedule {
+public class Schedule extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +38,7 @@ public class Schedule {
     @NotNull
     private LocalDate endDate;
 
-    private LocalDate endTime;
+    private LocalTime endTime;
 
     @NotNull
     @Column(columnDefinition = "char(7) default '#333333'")

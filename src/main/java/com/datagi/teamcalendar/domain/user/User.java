@@ -1,5 +1,6 @@
 package com.datagi.teamcalendar.domain.user;
 
+import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -8,13 +9,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
+@Builder
+@ToString
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@ToString
-@Builder
-@EqualsAndHashCode
 @Entity
-public class User {
+public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

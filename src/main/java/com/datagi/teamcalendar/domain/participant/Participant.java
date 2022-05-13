@@ -2,6 +2,7 @@ package com.datagi.teamcalendar.domain.participant;
 
 import com.datagi.teamcalendar.domain.member.Member;
 import com.datagi.teamcalendar.domain.schedule.Schedule;
+import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,11 +10,14 @@ import javax.persistence.*;
 @Getter
 @Builder
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class Participant {
+@Table(uniqueConstraints = @UniqueConstraint(
+        columnNames = {"schedule_id", "member_id"}
+))
+public class Participant extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,21 +2,22 @@ package com.datagi.teamcalendar.domain.position;
 
 import com.datagi.teamcalendar.domain.member.Member;
 import com.datagi.teamcalendar.domain.role.Role;
+import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Getter
 @Builder
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class Position {
+@Table(uniqueConstraints = @UniqueConstraint(
+        columnNames = {"role_id", "member_id"}
+))
+public class Position extends BaseTimeEntity {
 
     @Id
     private Long id;
