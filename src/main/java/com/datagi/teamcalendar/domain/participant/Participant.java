@@ -1,17 +1,17 @@
 package com.datagi.teamcalendar.domain.participant;
 
+import com.datagi.teamcalendar.domain.member.Member;
 import com.datagi.teamcalendar.domain.schedule.Schedule;
-import com.datagi.teamcalendar.domain.user.User;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@EqualsAndHashCode
 @Builder
 @ToString
+@EqualsAndHashCode
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 public class Participant {
 
@@ -20,10 +20,10 @@ public class Participant {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 }
