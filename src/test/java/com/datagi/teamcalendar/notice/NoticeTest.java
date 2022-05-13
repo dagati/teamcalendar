@@ -1,7 +1,7 @@
-package com.datagi.teamcalendar.announcement;
+package com.datagi.teamcalendar.notice;
 
-import com.datagi.teamcalendar.domain.announcement.Announcement;
-import com.datagi.teamcalendar.domain.announcement.repository.AnnouncementRepository;
+import com.datagi.teamcalendar.domain.notice.Notice;
+import com.datagi.teamcalendar.domain.notice.repository.NoticeRepository;
 import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -18,66 +18,66 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @SpringBootTest
-class AnnouncementTest {
+class NoticeTest {
 
-    private final AnnouncementRepository announcementRepository;
+    private final NoticeRepository noticeRepository;
     private final UserRepository userRepository;
 
     @Autowired
-    public AnnouncementTest(
-            AnnouncementRepository announcementRepository,
+    public NoticeTest(
+            NoticeRepository noticeRepository,
             UserRepository userRepository
     ) {
-        this.announcementRepository = announcementRepository;
+        this.noticeRepository = noticeRepository;
         this.userRepository = userRepository;
     }
 
     @Test
     @DisplayName("공지사항 저장 성공 테스트")
-    void saveAnnouncementTest() {
+    void saveNoticeTest() {
 
         User user = userRepository.getById(1L);
 
-        Announcement announcement = Announcement.builder()
+        Notice notice = Notice.builder()
                 .title("hello friends")
                 .content("test content")
                 .createdDatetime(LocalDateTime.now())
                 .user(user)
                 .build();
-        announcementRepository.save(announcement);
+        noticeRepository.save(notice);
 
-        assertThat(announcement.getId()).isNotNull();
+        assertThat(notice.getId()).isNotNull();
     }
 
     @Test
     @DisplayName("공지사항 저장 실패 테스트 (제목이 없음)")
-    void saveAnnouncementFailureTest1() {
+    void saveNoticeFailureTest1() {
 
         User user = userRepository.getById(1L);
 
-        Announcement announcement = Announcement.builder()
+        Notice notice = Notice.builder()
                 .content("test content")
                 .createdDatetime(LocalDateTime.now())
                 .user(user)
                 .build();
 
-        assertThatThrownBy(() -> announcementRepository.save(announcement))
+        assertThatThrownBy(() -> noticeRepository.save(notice))
                 .isInstanceOf(ConstraintViolationException.class);
     }
 
     @Test
     @DisplayName("공지사항 저장 실패 테스트 (내용이 없음)")
-    void saveAnnouncementFailureTest2() {
+    void saveNoticeFailureTest2() {
 
         User user = userRepository.getById(2L);
 
-        Announcement announcement = Announcement.builder()
+        Notice notice = Notice.builder()
                 .title("hello friends")
                 .createdDatetime(LocalDateTime.now())
                 .user(user)
                 .build();
 
-        assertThatThrownBy(() -> announcementRepository.save(announcement))
+        assertThatThrownBy(() -> noticeRepository.save(notice))
                 .isInstanceOf(ConstraintViolationException.class);
     }
 }

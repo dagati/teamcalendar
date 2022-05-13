@@ -1,4 +1,4 @@
-package com.datagi.teamcalendar.domain.announcement;
+package com.datagi.teamcalendar.domain.notice;
 
 import com.datagi.teamcalendar.domain.user.User;
 import lombok.*;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @ToString
 @EqualsAndHashCode
 @Entity
-public class Announcement {
+public class Notice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
