@@ -9,11 +9,11 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Builder
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Entity
 public class Notice {
 
@@ -26,7 +26,7 @@ public class Notice {
     private String title;
 
     @NotNull
-    @Length(max = 2000)
+    @Column(columnDefinition = "text")
     private String content;
 
     @NotNull
