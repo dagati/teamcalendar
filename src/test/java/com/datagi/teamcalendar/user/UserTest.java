@@ -3,7 +3,6 @@ package com.datagi.teamcalendar.user;
 import com.datagi.teamcalendar.domain.user.Authority;
 import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.domain.user.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -15,7 +14,6 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-@Slf4j
 @ActiveProfiles("develop")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
