@@ -20,6 +20,7 @@ import javax.persistence.*;
 public class Position extends BaseTimeEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
