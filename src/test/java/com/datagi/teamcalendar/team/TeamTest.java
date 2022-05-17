@@ -40,7 +40,7 @@ class TeamTest {
     void saveTeamFailureTest2() {
 
         Team team = Team.builder()
-                .name("a verrrrrrrrrrrrrrrry long team name")
+                .name("a very long team name")
                 .build();
 
         assertThatThrownBy(() -> teamRepository.save(team))
