@@ -14,6 +14,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"parent_id", "child_id"})
+})
 public class TeamRelation extends BaseTimeEntity {
 
     @Id
