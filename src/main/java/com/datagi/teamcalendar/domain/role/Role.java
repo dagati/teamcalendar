@@ -3,10 +3,10 @@ package com.datagi.teamcalendar.domain.role;
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Builder
@@ -21,10 +21,11 @@ public class Role extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Length(max = 20)
     @NotNull
+    @Size(max = 20)
     private String name;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
