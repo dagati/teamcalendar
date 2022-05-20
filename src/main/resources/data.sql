@@ -19,6 +19,8 @@ VALUES (null, 1, 1, 0);
 -- member
 INSERT INTO `member`(`id`, `team_id`, `user_id`)
 VALUES (null, 1, 1);
+INSERT INTO `member`(`id`, `team_id`, `user_id`)
+VALUES (null, 1, 3);
 
 -- role
 INSERT INTO `role`(`id`, `name`, `team_id`)
