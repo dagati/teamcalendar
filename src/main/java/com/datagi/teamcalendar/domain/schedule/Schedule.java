@@ -15,7 +15,6 @@ import java.time.LocalTime;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Entity
 public class Schedule extends BaseTimeEntity {
 
@@ -47,4 +46,25 @@ public class Schedule extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
+
+    public Schedule(Long id, String name, String detail,
+                    LocalDate beginDate, LocalTime beginTime, LocalDate endDate, LocalTime endTime,
+                    String color, Team team) {
+        if (beginDate.isAfter(endDate)) {
+            throw new IllegalArgumentException("The begin date must be after the end date");
+        }
+        if (beginDate.equals(endDate) && beginTime.isAfter(endTime)) {
+            throw new IllegalArgumentException("The begin time must be after the end time");
+        }
+
+        this.id = id;
+        this.name = name;
+        this.detail = detail;
+        this.beginDate = beginDate;
+        this.beginTime = beginTime;
+        this.endDate = endDate;
+        this.endTime = endTime;
+        this.color = color;
+        this.team = team;
+    }
 }
