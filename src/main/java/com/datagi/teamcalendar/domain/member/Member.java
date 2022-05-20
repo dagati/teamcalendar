@@ -6,6 +6,7 @@ import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Builder
@@ -22,10 +23,12 @@ public class Member extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
