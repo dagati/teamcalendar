@@ -1,6 +1,5 @@
-package com.datagi.teamcalendar.role;
+package com.datagi.teamcalendar.domain.role;
 
-import com.datagi.teamcalendar.domain.role.Role;
 import com.datagi.teamcalendar.domain.role.repository.RoleRepository;
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.team.repository.TeamRepository;

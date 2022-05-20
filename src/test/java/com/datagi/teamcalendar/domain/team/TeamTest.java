@@ -1,6 +1,5 @@
-package com.datagi.teamcalendar.team;
+package com.datagi.teamcalendar.domain.team;
 
-import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.team.repository.TeamRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

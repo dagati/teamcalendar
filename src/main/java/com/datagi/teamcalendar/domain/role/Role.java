@@ -15,6 +15,9 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"name", "team_id"})
+})
 public class Role extends BaseTimeEntity {
 
     @Id

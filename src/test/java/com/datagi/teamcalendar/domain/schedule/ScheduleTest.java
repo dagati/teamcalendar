@@ -1,6 +1,5 @@
-package com.datagi.teamcalendar.schedule;
+package com.datagi.teamcalendar.domain.schedule;
 
-import com.datagi.teamcalendar.domain.schedule.Schedule;
 import com.datagi.teamcalendar.domain.schedule.repository.ScheduleRepository;
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.team.repository.TeamRepository;

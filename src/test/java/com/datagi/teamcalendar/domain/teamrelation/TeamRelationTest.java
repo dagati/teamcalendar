@@ -1,8 +1,7 @@
-package com.datagi.teamcalendar.teamrelation;
+package com.datagi.teamcalendar.domain.teamrelation;
 
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.team.repository.TeamRepository;
-import com.datagi.teamcalendar.domain.teamrelation.TeamRelation;
 import com.datagi.teamcalendar.domain.teamrelation.repository.TeamRelationRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
@@ -10,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ActiveProfiles;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ActiveProfiles("develop")

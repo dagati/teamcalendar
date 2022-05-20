@@ -1,6 +1,5 @@
-package com.datagi.teamcalendar.member;
+package com.datagi.teamcalendar.domain.member;
 
-import com.datagi.teamcalendar.domain.member.Member;
 import com.datagi.teamcalendar.domain.member.repository.MemberRepository;
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.domain.team.repository.TeamRepository;

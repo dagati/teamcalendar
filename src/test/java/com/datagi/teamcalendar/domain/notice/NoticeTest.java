@@ -1,6 +1,5 @@
-package com.datagi.teamcalendar.notice;
+package com.datagi.teamcalendar.domain.notice;
 
-import com.datagi.teamcalendar.domain.notice.Notice;
 import com.datagi.teamcalendar.domain.notice.repository.NoticeRepository;
 import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.domain.user.repository.UserRepository;
