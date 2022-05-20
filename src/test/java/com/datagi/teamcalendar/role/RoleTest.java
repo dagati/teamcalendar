@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ActiveProfiles;
 
 import javax.validation.ConstraintViolationException;
@@ -54,6 +55,18 @@ class RoleTest {
 
         Assertions.assertThatThrownBy(() -> roleRepository.save(role))
                 .isInstanceOf(ConstraintViolationException.class);
+    }
+
+    @Test
+    @DisplayName("역할 생성 실패 테스트 (팀 내에 이미 역할이 존재함)")
+    void createRoleFailureTest3() {
+
+        Role role = Role.builder()
+                .name("leader")
+                .build();
+
+        Assertions.assertThatThrownBy(() -> roleRepository.save(role))
+                .isInstanceOf(DataIntegrityViolationException.class);
     }
 
     @Test
