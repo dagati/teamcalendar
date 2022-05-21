@@ -1,7 +1,7 @@
-package com.datagi.teamcalendar.domain.participant;
+package com.datagi.teamcalendar.domain.member;
 
-import com.datagi.teamcalendar.domain.member.Member;
-import com.datagi.teamcalendar.domain.schedule.Schedule;
+import com.datagi.teamcalendar.domain.team.Team;
+import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
 
@@ -14,11 +14,10 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Entity
 @Table(uniqueConstraints = @UniqueConstraint(
-        columnNames = {"schedule_id", "member_id"}
-))
-public class Participant extends BaseTimeEntity {
+                columnNames = {"team_id", "user_id"}))
+@Entity
+public class Member extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +25,11 @@ public class Participant extends BaseTimeEntity {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "schedule_id")
-    private Schedule schedule;
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @JoinColumn(name = "user_id")
+    private User user;
 }

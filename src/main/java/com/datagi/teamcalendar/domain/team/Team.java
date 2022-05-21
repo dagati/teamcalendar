@@ -1,30 +1,32 @@
 package com.datagi.teamcalendar.domain.team;
 
-import com.datagi.teamcalendar.domain.user.User;
+import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
-@ToString
-@EqualsAndHashCode
 @Builder
+@ToString
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class Team {
+public class Team extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @Length(max = 10)
+    @Size(max = 20)
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "leader_id")
-    private User leader;
+    @Size(min = 16, max = 16)
+    private String code;
 }

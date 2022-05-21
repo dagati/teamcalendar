@@ -1,11 +1,14 @@
-package com.datagi.teamcalendar.domain.user;
+package com.datagi.teamcalendar.domain.notice;
 
+import com.datagi.teamcalendar.domain.user.User;
 import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -14,26 +17,26 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
-public class User extends BaseTimeEntity {
+public class Notice extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @Size(max = 20)
-    private String name;
+    @Size(max = 100)
+    private String title;
 
     @NotNull
-    @Size(max = 80)
-    @Column(unique = true)
-    private String email;
+    @Column(columnDefinition = "text")
+    private String content;
 
     @NotNull
-    @Size(max = 64)
-    private String password;
+    @CreatedDate
+    private LocalDateTime createdDatetime;
 
-    @Enumerated(EnumType.STRING)
     @NotNull
-    private Authority authority;
+    @ManyToOne
+    @JoinColumn(name = "writer_id")
+    private User user;
 }

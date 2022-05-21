@@ -1,4 +1,4 @@
-package com.datagi.teamcalendar.domain.role;
+package com.datagi.teamcalendar.domain.teamrelation;
 
 import com.datagi.teamcalendar.domain.team.Team;
 import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
@@ -6,30 +6,34 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Getter
 @Builder
-@EqualsAndHashCode(callSuper = true)
 @ToString
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
 @Table(uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"name", "team_id"})
+        @UniqueConstraint(columnNames = {"parent_id", "child_id"})
 })
-public class Role extends BaseTimeEntity {
+public class TeamRelation extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @Size(max = 20)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Team parent;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
+    @JoinColumn(name = "child_id")
+    private Team child;
+
+    @NotNull
+    @Column(columnDefinition = "tinyint")
+    private int depth;
 }
