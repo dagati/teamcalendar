@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -23,10 +24,10 @@ public class Schedule extends BaseTimeEntity {
     private Long id;
 
     @NotNull
-    @Length(max = 20)
+    @Size(max = 20)
     private String name;
 
-    @Length(max = 512)
+    @Size(max = 512)
     private String detail;
 
     @NotNull

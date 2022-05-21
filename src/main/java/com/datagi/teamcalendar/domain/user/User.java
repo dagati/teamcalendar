@@ -2,7 +2,6 @@ package com.datagi.teamcalendar.domain.user;
 
 import com.datagi.teamcalendar.global.entity.BaseTimeEntity;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -31,7 +30,7 @@ public class User extends BaseTimeEntity {
     private String email;
 
     @NotNull
-    @Length(max = 64)
+    @Size(max = 64)
     private String password;
 
     @Enumerated(EnumType.STRING)
