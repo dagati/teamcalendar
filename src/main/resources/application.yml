@@ -22,7 +22,7 @@ spring:
 spring:
   config:
     activate:
-      on-profile: release
+      on-profile: default
   jpa:
     database: mysql
     hibernate:
